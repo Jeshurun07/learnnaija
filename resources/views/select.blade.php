@@ -9,7 +9,7 @@
 
                 <div class="card-body">
 <h1>This is where the action begins</h1>
-<form method="POST" action="{{ action('QuesRetriever@questView') }}">
+<form method="POST" action="landing">
                         @csrf
     <div>
 <label for="subject">Select the level of difficulty</label>

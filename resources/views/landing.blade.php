@@ -18,11 +18,12 @@
                 </div>
                 <div>
                     <p>&nbsp;</p>
+                    
                     <form method="GET" action="{{ action('QuesRetriever@questView' )}}">
                         @csrf
                         
                     @foreach($question as $quest)
-                    <label>{{ $quest->ques }};</input><br />
+                    <label>{{ $quest->ques }};</label><br />
                     <input type="radio" name="{{ $quest->ques }}" id="{{ $quest->ques }}">{{ $quest->opt1 }}; </input><br />
                     <input type="radio" name="{{$quest->ques}}" id="{{ $quest->ques}}">{{ $quest->opt2 }}; </input><br />
                     <input type="radio" name="{{$quest->ques}}" id="{{ $quest->ques}}">{{ $quest->opt3 }}; </input><br />
@@ -31,7 +32,6 @@
                     @endforeach
                     </form>
                 </div>
-                <div>{{ $question->links() }}</div>
             </div>
         </div>
     </div>

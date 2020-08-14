@@ -17,23 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/select', function () {
+Route::get('/select', function () {//Controls the top nav
     return view('select');
 });
 
-Route::get('/newlogin', function () {
-    return view('loginNew');
-});
 #Route::resource('select_index', ['uses' => 'QuesRetriever@questView']);
 
-Route::post('select_index', 'QuesRetriever@questView');
+Route::match(['get','post'],'/landing', 'QuesRetriever@questView');
 
-Route::post('/landing','QuesRetriever@questView');//Having issues loading this 
+#Route::post('/landing','QuesRetriever@selectView');//Having issues loading this 
 
 
-Route::get('/quest',function(){
- return view('questions');
-});
 
 Auth::routes();
 
