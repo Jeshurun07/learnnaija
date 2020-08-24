@@ -22,8 +22,7 @@ class QuesRetriever extends Controller //to manage dbase queries
 
 
     public function selectView($dbase){
-        #$query = "SELECT * FROM $dbase";
-        $question=DB::table($dbase)->get();
+        $question=DB::table($dbase)->paginate(5);
         #dd($question);
         return $question;
 }
@@ -33,7 +32,7 @@ class QuesRetriever extends Controller //to manage dbase queries
         if($dbase == NULL){
             $subj = $_POST['subj'];
             $level = $_POST['level'];
-            $questions = QuestData::createQuesView($level,$subj);#remember to introduce the condition for each one 
+            $questions = QuestData::createQuesView($level,$subj); 
         }            
         $dbase = session()->get('sessId');   
         $question=QuesRetriever::selectView($dbase);
@@ -41,6 +40,12 @@ class QuesRetriever extends Controller //to manage dbase queries
             #dd($question);
     }
  
+    public function resultView(){
+
+        $score = "This is your score";
+        return view('/score');
+            #dd($question);
+    }
 
     public function show(Request $request, $id)
     {

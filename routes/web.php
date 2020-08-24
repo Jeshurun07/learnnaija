@@ -27,6 +27,7 @@ Route::match(['get','post'],'/landing', 'QuesRetriever@questView');
 
 #Route::post('/landing','QuesRetriever@selectView');//Having issues loading this 
 
+Route::get('/score', 'QuesRetriever@resultView');
 
 
 Auth::routes();
