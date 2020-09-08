@@ -16,21 +16,28 @@
 
                     {{ __('Welcome to the landing page!') }}
                 </div>
+                <div> {{ $question->links() }}</div>
                 <div>
                     <p>&nbsp;</p>
+                   
                     
                   <form method="GET" action="{{ action('QuesRetriever@resultView' )}}">
                         @csrf
-                        
+                        <div id="question">
                     @foreach($question as $quest)
                     <label>{{ $quest->ques }};</label><br />
-                    <input type="radio" name="{{ $quest->ques }}" id="{{ $quest->ques }}" value="a" {{ (old($quest->ques)=='a') ? 'checked' : ''}}>{{ $quest->opt1 }}; </input><br />
-                    <input type="radio" name="{{$quest->ques}}" id="{{ $quest->ques}}" value="b" {{ (old($quest->ques)=='b') ? 'checked' : ''}}>{{ $quest->opt2 }}; </input><br />
-                    <input type="radio" name="{{$quest->ques}}" id="{{ $quest->ques}}" value="c" {{ (old($quest->ques)=='c') ? 'checked' : ''}}>{{ $quest->opt3 }}; </input><br />
-                    <input type="radio" name="{{$quest->ques}}" id="{{ $quest->ques}}" value="d" {{ (old($quest->ques)=='d') ? 'checked' : ''}}>{{ $quest->opt4 }}; </input><br />
-                    <input type="radio" name="{{$quest->ques}}" id="{{ $quest->ques}}" value="e" {{ (old($quest->ques)=='e') ? 'checked' : ''}}>{{ $quest->opt5 }}; </input><br /><p>&nbsp;</p>
-                    
+                    <div id="options">
+                        <ul>
+                    <li><input type="radio" name="{{ $quest->questionId }}" id="{{ $quest->questionId }}" value="a">{{ $quest->opt1 }}; </input></li><br />
+                    <li><input type="radio" name="{{ $quest->questionId }}" id="{{ $quest->questionId }}" value="b">{{ $quest->opt2 }}; </input></li><br />
+                    <li><input type="radio" name="{{ $quest->questionId }}" id="{{ $quest->questionId }}" value="c">{{ $quest->opt3 }}; </input></li><br />
+                    <li><input type="radio" name="{{ $quest->questionId }}" id="{{ $quest->questionId }}" value="d">{{ $quest->opt4 }}; </input></li><br />
+                    <li><input type="radio" name="{{ $quest->questionId }}" id="{{ $quest->questionId }}" value="e">{{ $quest->opt5 }}; </input></li><br />
+                    <input type="hidden" name="cor" id="cor" value="{{ $quest->corr }}"></input><br /></ul><p>&nbsp;</p>
+                    </div>
+                   
                     @endforeach
+                    </div>
                     <p>
                     <button type="submit" class="btn btn-warning" id="endTest" name="End Test">End Test</button>
                     </p>
@@ -41,5 +48,8 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="{{ URL::asset('js/jsfile.js') }}"></script>
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ URL::asset('js/src/cookie.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/jsfile.js') }}"></script>
+

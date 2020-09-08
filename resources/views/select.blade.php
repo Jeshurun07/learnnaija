@@ -21,7 +21,7 @@
 <label for="subject">Select subject</label>
 <select name="subj" id="subj">
 <option value="bio">Biology</option>
-<option value="cmm">Commercial</option>
+<option value="cmm">Commerce</option>
 </select><br />
 <input name='submit' id="submit" type="submit"></input>
 </form>
@@ -73,6 +73,7 @@
 		</div>
 	</div>
 </form>
-<script type="text/javascript" src="{{asset('js/custom/jsfile.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ URL::asset('js/jsfile.js') }}"></script>
 </body>
 </html>
