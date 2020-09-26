@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Session;
+use Illuminate\Support\Facades\Auth;
 
 class QuestData extends Model
 {
@@ -30,13 +31,17 @@ class QuestData extends Model
         return('done');
     }
 
-
+    public static function updateScore($user,$subj,$score){
+        DB::insert('insert into score (scoreId, user, subj, score, created_at ) values (?, ?,?, ?,?)', ['0', $user, $subj, $score, NOW()]);
+        return TRUE;
+    }
     
-    /*public static function selectQues($dbase)
+    public static function dropTempTbl($tbl)
     { 
-        $query = "SELECT * FROM $dbase";
-        DB::select($query);
-    }*/
+    // Get the currently authenticated user...
+    DB::table($tbl)->delete();
+        return TRUE;
+    }
     
 
 }

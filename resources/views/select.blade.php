@@ -6,7 +6,6 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Select') }}</div>
-
                 <div class="card-body">
 <h1>This is where the action begins</h1>
 <form method="POST" action="landing">

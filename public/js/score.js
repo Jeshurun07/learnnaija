@@ -25,8 +25,11 @@ function checkSelections(selObj, corObj) {
 }
 
 var finalResult = checkSelections(selObj, corObj);
+finalScore = "";
 finalResult = Math.round((finalResult.length / 30) * 100);
 $("#result").append("<h1> Your Score is: " + finalResult + "% </h1>");
+//Create the cookie to hold the score
+$.cookie("finalScore", finalResult);
 
 function deleteCookies() {
     //Remove all cookies code
@@ -38,5 +41,4 @@ function deleteCookies() {
         var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
         document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
-    $(location).attr('href', 'http://localhost/learnnaija2/public/select');
 }
