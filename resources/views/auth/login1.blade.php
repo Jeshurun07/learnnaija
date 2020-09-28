@@ -18,12 +18,12 @@
 
     <!-- Vendor CSS Files -->
     <link href = "{{ URL::asset('css/style.css') }}" rel="stylesheet">
-    <link href = "{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href = "{{ URL::asset('css/vendor/icofont/icofont.min.css') }}" rel="stylesheet">
-    <link href = "{{ URL::asset('css/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href = "{{ URL::asset('css/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-    <link href = "{{ URL::asset('css/venobox/venobox.css') }}" rel="stylesheet">
-    <link href = "{{ URL::asset('css/venobox/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href = "{{ URL::asset('bootstrap.min.css') }}" rel="stylesheet">
+    <link href = "{{ URL::asset('vendor/icofont/icofont.min.css') }}" rel="stylesheet">
+    <link href = "{{ URL::asset('vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href = "{{ URL::asset('vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href = "{{ URL::asset('venobox/venobox.css') }}" rel="stylesheet">
+    <link href = "{{ URL::asset('venobox/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
     
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
@@ -61,8 +61,6 @@
             @endif
             <li><a href="#">Frequently Asked</a></li>
                     <li><a href="#">Contact</a></li>
-
-
 </ul>
 </nav>
 <!-- .nav-menu -->
@@ -91,86 +89,123 @@
         <div class="container">
             <div class="row">
             @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Select') }}</div>
-                <div class="card-body">
-<form method="POST" action="landing">
+                <div class="col-lg-6 pt-2 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                <form method="POST" action="{{ route('login') }}">
                         @csrf
-    <div>
-<label for="subject">Level</label>
-<select name="level" id="level">
-<option value="adv">Advance (JAMB, 'A'levels) </option>
-<option value="int">Intermediate (WAEC, NECO) </option>
-<option value="basic">Basic(BECE, NABTEB) </option>
-</select><br />
-<label for="subject">Select subject</label>
-<select name="subj" id="subj">
-<option value="bio">Biology</option>
-<option value="cmm">Commerce</option>
-</select><br />
-<input name='submit' id="submit" type="submit"></input>
-</form>
-<!--Will come back to the display using jquery later*-->
-<div id="js-jss-subj" style="display: none">
+<label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-		<div id="js-sss-subj" style="display: none">
-	 		<h2>Step 2: Select the Subject</h2>
-			<div class="form-check">
-					<input type="radio" name="subject" id="rad_5" class="form-check-input" value="eng">
-					<label class="form-check-label" for="rad_5">English Language</label>
-			</div>
-			<div class="form-check">
-					<input type="radio" name="subject" id="rad_6" class="form-check-input" value="mth">
-					<label class="form-check-label" for="rad_6">Mathematics</label>
-			</div>
-			<div class="form-check">
-					<input type="radio" name="subject" id="rad_7" class="form-check-input" value="phy">
-					<label class="form-check-label" for="rad_7">Physics</label>
-			</div>
-			<div class="form-check">
-					<input type="radio" name="subject" id="rad_8" class="form-check-input" value="bio">
-					<label class="form-check-label" for="rad_8">Biology</label>
-			</div>
-			<div class="form-check">
-					<input type="radio" name="subject" id="rad_9" class="form-check-input" value="cmm">
-					<label class="form-check-label" for="rad_9">Commerce</label>
-			</div>
-			<div class="form-check">
-					<input type="radio" name="subject" id="rad_10" class="form-check-input" value="chm">
-					<label class="form-check-label" for="rad_10">Chemistry</label>
-			</div>
-			<div class="form-check">
-					<input type="radio" name="subject" id="rad_11" class="form-check-input" value="eco">
-					<label class="form-check-label" for="rad_11">Economics</label>
-			</div>
-			<div class="form-check">
-					<input type="radio" name="subject" id="rad_12" class="form-check-input" value="gov">
-					<label class="form-check-label" for="rad_12">Government</label>
-			</div>
-			<div class="form-check">
-					<input type="radio" name="subject" id="rad_13" class="form-check-input" value="phy">
-					<label class="form-check-label" for="rad_13">Physics</label>
-			</div>
-			<div class="form-check">
-					<input type="radio" name="subject" id="rad_14" class="form-check-input" value="acc">
-					<label class="form-check-label" for="rad_14">Principles of Accounts</label>
-			</div>
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+<div class="col-md-6">
+    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+    @error('password')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+</div>
+<input type="submit"></input>
+<input type="reset"></input>
+</form>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2 hero-img">
+                    <img src="{{ URL::asset('img/student.jpg') }}" rel="stylesheet" class="img-fluid">
+                </div>
             </div>
         </div>
 
     </section>
     <!-- End Hero -->
+
+
+
+        <!-- ======= Frequently Asked Questions Section ======= -->
+        <section id="faq" class="faq">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+
+                <ul class="faq-list">
+
+                    <li>
+                        <a data-toggle="collapse" class="" href="#faq1">Is this resource really free <i class="icofont-simple-up"></i></a>
+                        <div id="faq1" class="collapse show" data-parent=".faq-list">
+                            <p>
+                                Yes it is! No hidden fees nor charges for its use any time in future. We might introduce a premium package in future.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a data-toggle="collapse" href="#faq2" class="collapsed">Are these standard exam questions? <i class="icofont-simple-up"></i></a>
+                        <div id="faq2" class="collapse" data-parent=".faq-list">
+                            <p>
+                                The questions are culled from past questions and the answers are graded by highly rated teachers. However, students and users of this resource should be aware that this resource is for practice only. They should not be taken as questions they will encounter in a real exam.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a data-toggle="collapse" href="#faq3" class="collapsed">How often are these questions reviewed and updated?<i class="icofont-simple-up"></i></a>
+                        <div id="faq3" class="collapse" data-parent=".faq-list">
+                            <p>
+                                We add new questions as soon as they are graded and rated by our faculty. This depends on the availability of questions.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a data-toggle="collapse" href="#faq4" class="collapsed">How do we contact you? <i class="icofont-simple-up"></i></a>
+                        <div id="faq4" class="collapse" data-parent=".faq-list">
+                            <p>
+                                Check our contact details below.
+                            </p>
+                        </div>
+                    </li>
+
+                   <!-- <li>
+                        <a data-toggle="collapse" href="#faq5" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="icofont-simple-up"></i></a>
+                        <div id="faq5" class="collapse" data-parent=".faq-list">
+                            <p>
+                                Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+                            </p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a data-toggle="collapse" href="#faq6" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="icofont-simple-up"></i></a>
+                        <div id="faq6" class="collapse" data-parent=".faq-list">
+                            <p>
+                                Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque. Pellentesque
+                                diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
+                            </p>
+                        </div>
+                    </li>-->
+
+                </ul>
+
+            </div>
+        </section>
+        <!-- End Frequently Asked Questions Section -->
+
         <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact section-bg">
             <div class="container">
 
                 <div class="section-title">
                     <h2>Contact</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi
-                        quidem hic quas.</p>
                 </div>
 
                 <div class="row">
@@ -189,7 +224,7 @@
                                 <div class="info-box mt-4">
                                     <i class="bx bx-envelope"></i>
                                     <h3>Email Us</h3>
-                                    <p>info@example.com<br>contact@example.com</p>
+                                    <p>info@learnnaija.com<br>contact@learnnaija.com</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -249,27 +284,35 @@
                 <div class="row">
 
                     <div class="col-lg-3 col-md-6 footer-contact">
-                        <h3>Resi.</h3>
+                        <h3>LearnNaija</h3>
                         <p>
                             A108 Adam Street <br> New York, NY 535022<br> United States <br><br>
                             <strong>Phone:</strong> +1 5589 55488 55<br>
-                            <strong>Email:</strong> info@example.com<br>
+                            <strong>Email:</strong> info@learnnaija.com<br>
                         </p>
                     </div>
 
                     <div class="col-lg-2 col-md-6 footer-links">
                         <h4>Useful Links</h4>
-                        <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-                        </ul>
+                    <ul>
+                        @if (Route::has('login'))
+                        @auth
+                        <li> <a href="{{ url('/') }}">Home</a></li>
+                        @else
+                        <li> <a href="{{ route('login') }}">Login</a></li>
+
+                            @if (Route::has('register'))
+                            <li> <a href="{{ route('register') }}">Register</a></li>
+                            @endif
+                        @endauth
+                        @endif
+                        <li><a href="#faq">Frequently Asked</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>Our Services</h4>
+                        <!--<h4>Our Services</h4>
                         <ul>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
@@ -277,11 +320,11 @@
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
                         </ul>
-                    </div>
+                    </div>-->
 
                     <div class="col-lg-4 col-md-6 footer-newsletter">
                         <h4>Join Our Newsletter</h4>
-                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                        <p>For information on schools and books</p>
                         <form action="" method="post">
                             <input type="email" name="email"><input type="submit" value="Subscribe">
                         </form>
@@ -295,7 +338,7 @@
 
             <div class="mr-md-auto text-center text-md-left">
                 <div class="copyright">
-                    &copy; Copyright <strong><span>Resi</span></strong>. All Rights Reserved
+                    &copy; Copyright <strong><span>learnnaija</span></strong>. All Rights Reserved
                 </div>
                 <div class="credits">
                     <!-- All the links in the footer should remain intact. -->
@@ -319,18 +362,16 @@
     <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
     <!-- Vendor JS Files -->
-    <script type="text/javascript" src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('vendor/jquery.easing/jquery.easing.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('vendor/php-email-form/validate.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('vendor/waypoints/jquery.waypoints.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('vendor/counterup/counterup.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('vendor/venobox/venobox.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('vendor/owl.carousel/owl.carousel.min.js') }}"></script>
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="assets/vendor/counterup/counterup.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/venobox/venobox.min.js"></script>
     <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/jsfile.js') }}"></script>
+
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
 

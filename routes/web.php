@@ -23,7 +23,7 @@ Route::get('/', function () {
 });*/
 
 Route::get('/select', function () {//Controls the top nav
-    return view('select1');
+    return view('select');
 });
 Route::match(['get','post'],'/landing', 'QuesRetriever@questView');
 

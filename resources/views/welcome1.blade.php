@@ -35,35 +35,34 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
-
+<div id="app"></div>
 <body>
+@extends('layouts.app')
 
+
+<script src="{{ asset('js/app.js') }}"></script>
+    </div>
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top ">
+    <div id="app">
         <div class="container d-flex align-items-center justify-content-between">
-
             <h1 class="logo"><a href="index.html">LearnNaija</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
-                    <li class="active"><a href="#header">Home</a></li>
-                    <li><a href="#faq">Frequently Asked</a></li>
-                    <li><a href="#contact">Contact</a></li>
                     @if (Route::has('login'))
                     @auth
-                       <li> <a href="{{ url('/select') }}">Home</a></li>
+                    <li> <a href="{{ url('/') }}">Home</a></li>
                     @else
                        <li> <a href="{{ route('login') }}">Login</a></li>
-
                         @if (Route::has('register'))
                            <li> <a href="{{ route('register') }}">Register</a></li>
                         @endif
                     @endauth
             @endif
-
-
+            <li><a href="#">Frequently Asked</a></li>
+                    <li><a href="#">Contact</a></li>
 </ul>
 </nav>
 <!-- .nav-menu -->
@@ -91,13 +90,14 @@
     <section id="hero" class="d-flex align-items-center">
         <div class="container">
             <div class="row">
+            @section('content')
                 <div class="col-lg-6 pt-2 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                    <h1>Welcome to LearnNaija</h1>
                     <p>
                     LearnNaija is a free online resource for students preparing for national exams in Nigeria and West Africa. This resource allows you to take tests, see your result and take more tests until you reach your goal.
                     </p>
                     <ul>How to make the most of this resource
                         <li><i class="ri-check-line"></i>Set a goal (e.g. 80% in a subject or in all subjects)</li>
+                        <li><i class="ri-check-line"></i> <a href="{{ route('register') }}">Register</a>/<a href="{{ route('login') }}">Login</a> </li>
                         <li><i class="ri-check-line"></i> Take a first test</li>
                         <li><i class="ri-check-line"></i> Review your scores</li>
                         <li><i class="ri-check-line"></i> Study more and take more tests until you reach your goal</li>
@@ -108,7 +108,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img">
-                    <img src="assets/img/hero-img.png" class="img-fluid" alt="">
+                    <img src="{{ URL::asset('img/student.jpg') }}" rel="stylesheet" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -129,45 +129,42 @@
                 <ul class="faq-list">
 
                     <li>
-                        <a data-toggle="collapse" class="" href="#faq1">Non consectetur a erat nam at lectus urna duis? <i class="icofont-simple-up"></i></a>
+                        <a data-toggle="collapse" class="" href="#faq1">Is this resource really free <i class="icofont-simple-up"></i></a>
                         <div id="faq1" class="collapse show" data-parent=".faq-list">
                             <p>
-                                Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                                Yes it is! No hidden fees nor charges for its use any time in future. We might introduce a premium package in future.
                             </p>
                         </div>
                     </li>
 
                     <li>
-                        <a data-toggle="collapse" href="#faq2" class="collapsed">Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque? <i class="icofont-simple-up"></i></a>
+                        <a data-toggle="collapse" href="#faq2" class="collapsed">Are these standard exam questions? <i class="icofont-simple-up"></i></a>
                         <div id="faq2" class="collapse" data-parent=".faq-list">
                             <p>
-                                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in
-                                cursus turpis massa tincidunt dui.
+                                The questions are culled from past questions and the answers are graded by highly rated teachers. However, students and users of this resource should be aware that this resource is for practice only. They should not be taken as questions they will encounter in a real exam.
                             </p>
                         </div>
                     </li>
 
                     <li>
-                        <a data-toggle="collapse" href="#faq3" class="collapsed">Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi? <i class="icofont-simple-up"></i></a>
+                        <a data-toggle="collapse" href="#faq3" class="collapsed">How often are these questions reviewed and updated?<i class="icofont-simple-up"></i></a>
                         <div id="faq3" class="collapse" data-parent=".faq-list">
                             <p>
-                                Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna
-                                molestie at elementum eu facilisis sed odio morbi quis
+                                We add new questions as soon as they are graded and rated by our faculty. This depends on the availability of questions.
                             </p>
                         </div>
                     </li>
 
                     <li>
-                        <a data-toggle="collapse" href="#faq4" class="collapsed">Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla? <i class="icofont-simple-up"></i></a>
+                        <a data-toggle="collapse" href="#faq4" class="collapsed">How do we contact you? <i class="icofont-simple-up"></i></a>
                         <div id="faq4" class="collapse" data-parent=".faq-list">
                             <p>
-                                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in
-                                cursus turpis massa tincidunt dui.
+                                Check our contact details below.
                             </p>
                         </div>
                     </li>
 
-                    <li>
+                   <!-- <li>
                         <a data-toggle="collapse" href="#faq5" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="icofont-simple-up"></i></a>
                         <div id="faq5" class="collapse" data-parent=".faq-list">
                             <p>
@@ -184,7 +181,7 @@
                                 diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
                             </p>
                         </div>
-                    </li>
+                    </li>-->
 
                 </ul>
 
@@ -198,8 +195,6 @@
 
                 <div class="section-title">
                     <h2>Contact</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi
-                        quidem hic quas.</p>
                 </div>
 
                 <div class="row">
@@ -218,7 +213,7 @@
                                 <div class="info-box mt-4">
                                     <i class="bx bx-envelope"></i>
                                     <h3>Email Us</h3>
-                                    <p>info@example.com<br>contact@example.com</p>
+                                    <p>info@learnnaija.com<br>contact@learnnaija.com</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -278,27 +273,35 @@
                 <div class="row">
 
                     <div class="col-lg-3 col-md-6 footer-contact">
-                        <h3>Resi.</h3>
+                        <h3>LearnNaija</h3>
                         <p>
                             A108 Adam Street <br> New York, NY 535022<br> United States <br><br>
                             <strong>Phone:</strong> +1 5589 55488 55<br>
-                            <strong>Email:</strong> info@example.com<br>
+                            <strong>Email:</strong> info@learnnaija.com<br>
                         </p>
                     </div>
 
                     <div class="col-lg-2 col-md-6 footer-links">
                         <h4>Useful Links</h4>
-                        <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-                        </ul>
+                    <ul>
+                        @if (Route::has('login'))
+                        @auth
+                        <li> <a href="{{ url('/') }}">Home</a></li>
+                        @else
+                        <li> <a href="{{ route('login') }}">Login</a></li>
+
+                            @if (Route::has('register'))
+                            <li> <a href="{{ route('register') }}">Register</a></li>
+                            @endif
+                        @endauth
+                        @endif
+                        <li><a href="#faq">Frequently Asked</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>Our Services</h4>
+                        <!--<h4>Our Services</h4>
                         <ul>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
@@ -306,11 +309,11 @@
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
                         </ul>
-                    </div>
+                    </div>-->
 
                     <div class="col-lg-4 col-md-6 footer-newsletter">
                         <h4>Join Our Newsletter</h4>
-                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                        <p>For information on schools and books</p>
                         <form action="" method="post">
                             <input type="email" name="email"><input type="submit" value="Subscribe">
                         </form>
@@ -324,7 +327,7 @@
 
             <div class="mr-md-auto text-center text-md-left">
                 <div class="copyright">
-                    &copy; Copyright <strong><span>Resi</span></strong>. All Rights Reserved
+                    &copy; Copyright <strong><span>learnnaija</span></strong>. All Rights Reserved
                 </div>
                 <div class="credits">
                     <!-- All the links in the footer should remain intact. -->
@@ -357,10 +360,9 @@
     <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="assets/vendor/venobox/venobox.min.js"></script>
     <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
-
+</div>
 </body>
 
 </html>
