@@ -54,25 +54,21 @@ class QuesRetriever extends Controller //to manage dbase queries
             $user = Auth::user();
             $tbl = session()->get('sessId');
             $subj = session()->get('subj'); 
-            #$score = $_POST["result"];
+            //++++++++++++++++ ADD SCORE TO TABLE (later improvement) ++++++++++++++++
+            /*$score = $_POST["result"];
             $updateUser = QuestData::updateScore($user,$subj,$score); 
             if($updateUser==TRUE){
-            $request = QuestData::dropTempTbl($tbl);
             }else{
                 dd($updateUser);//remember to remove
             } 
-            if($request==TRUE){
+            if($request==TRUE){*/
             //Remove all session
+            $request = QuestData::dropTempTbl($tbl);
            $data = session()->forget('sessId');
            return view('/select');
-        }else{//remember to remove
-            dd($request);
         }
 
         }
-        //Route::redirect('/select');
-
-    }
     public function show(Request $request, $id)
     {
  

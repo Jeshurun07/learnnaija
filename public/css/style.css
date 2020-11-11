@@ -83,7 +83,7 @@ h6 {
 }
 
 #header .logo {
-    font-size: 32px;
+    font-size: ;
     margin: 0;
     padding: 0;
     line-height: 1;
@@ -1698,3 +1698,20 @@ section {
     color: #fff;
     text-decoration: none;
 }
+
+.up {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    color: #000;
+    font-weight: 700;
+}
+
+.btn {
+    float: right;
+}
+
+#restart {}

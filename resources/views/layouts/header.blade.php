@@ -4,22 +4,6 @@
             <h1 class="logo"><a href="index.html">LearnNaija</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-            <nav class="nav-menu d-none d-lg-block">
-                <ul>
-                    @if (Route::has('login'))
-                    @auth
-                    <li> <a href="{{ url('/') }}">Home</a></li>
-                    @else
-                       <li> <a href="{{ route('login') }}">Login</a></li>
-                        @if (Route::has('register'))
-                           <li> <a href="{{ route('register') }}">Register</a></li>
-                        @endif
-                    @endauth
-                    @endif
-                    <li><a href="#">Frequently Asked</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
         </div>
     </div>
 </header>
